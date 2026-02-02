@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Just One Question ❤️</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #ffd6e0, #ff9a9e);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.container {
+  background: #fff;
+  padding: 40px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  width: 90%;
+  max-width: 520px;
+  position: relative;
+}
+
+h1 {
+  color: #444;
+  margin-bottom: 25px;
+}
+
+.heart-gif {
+  width: 120px;
+  margin-bottom: 25px;
+}
+
+.buttons {
+  position: relative;
+  height: 130px;
+}
+
+button {
+  padding: 14px 34px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+#yesBtn {
+  background: #ff4f8b;
+  color: white;
+}
+
+#yesBtn:hover {
+  background: #ff2f75;
+}
+
+#noBtn {
+  position: absolute;
+  background: #ddd;
+  color: #333;
+  left: 60%;
+  top: 10px;
+}
+
+/* PAGE 2 */
+.page2 {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page2 img.main-gif {
+  width: 260px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+}
+
+.page2 p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* HEART RAIN */
+.heart {
+  position: fixed;
+  top: -20px;
+  font-size: 18px;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="container" id="page1">
+  <h1>Do you want to spend the rest of your life with me?</h1>
+
+  <img class="heart-gif" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTllbGg0aWU4aXB5bTZlNmExYjNrZXZjNjA5eHJtc2N4MXFhNXh4NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4N1wOi78ZGzSB6H7vK/giphy.gif" alt="Cute Heart">
+
+  <div class="buttons">
+    <button id="yesBtn">YES</button>
+    <button id="noBtn">NO</button>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="container page2" id="page2">
+  <img class="main-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXJtc3h1YjR3Ym1zdXVrdTVlOWFtaTV6bGNicm50eGZpNnR4N3J4NyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l4FGpP4lxGGgK5CBW/giphy.gif" alt="Bear Hug">
+
+  <p>
+    Sometimes I don’t even have the words to explain how grateful I am.
+    Thank you for loving me the way you do, for wanting me in your future,
+    for choosing me every single day.
+    <br><br>
+    If life is a journey, then walking it with you is the greatest blessing
+    I could ever ask for.
+    <br><br>
+    I want to spend the rest of my time making you as happy as you make me.
+    I love you so much, Aini ❤️
+  </p>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const page1 = document.getElementById("page1");
+const page2 = document.getElementById("page2");
+
+// NO button kabur
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * 300;
+  const y = Math.random() * 80;
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+});
+
+// YES pindah halaman
+yesBtn.addEventListener("click", () => {
+  page1.style.display = "none";
+  page2.style.display = "flex";
+  startHeartRain();
+});
+
+// Heart rain
+function startHeartRain() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }, 200);
+}
+</script>
+
+</body>
+</html>
